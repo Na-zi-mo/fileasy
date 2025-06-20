@@ -326,3 +326,5 @@ runs/*
 
 # Allow files in the assets directory
 !assets/**
+
+!requirements.txt
