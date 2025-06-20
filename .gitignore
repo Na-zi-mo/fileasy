@@ -306,3 +306,23 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudiocode
+
+runs/*
+!runs/.gitkeep
+
+# Ignore PDF files
+*.pdf
+
+# Ignore document files
+*.doc
+*.docx
+*.txt
+
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Allow files in the assets directory
+!assets/**
