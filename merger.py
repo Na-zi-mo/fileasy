@@ -1,8 +1,8 @@
-from PyPDF2 import PdfMerger
+from PyPDF2 import PdfMerger # type: ignore
 
 merger = PdfMerger()
-merger.append("lettre_de_motivationV2.pdf")
-merger.append("Adda_Nazim_TCF.pdf")
-merger.append("FMX_Nazim_Adda_contrat.pdf")
-merger.write("lettre_explicative_Nazim_Adda.pdf")
+merger.append("1.pdf")
+merger.append("1.pdf")
+merger.append("2.pdf")
+merger.write("/runs/result.pdf")
 merger.close()
