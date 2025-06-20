@@ -1,7 +1,9 @@
-import converter
-import merger
 import sys
 import argparse
+from PIL import Image
+from pathlib import Path
+from PyPDF2 import PdfMerger 
+import os
 
 class FileEasy:
 
@@ -9,21 +11,61 @@ class FileEasy:
 
         self.parser.add_argument('-c', '--convert', action='store_true', help='Convert the input file')
         self.parser.add_argument('-m', '--merge', action='store_true', help='Merge the input files')
-        self.parser.add_argument('-i', '--input', type=str, help='Input file for conversion')
-        self.parser.add_argument('-o', '--output', type=str, help='Output file for conversion')
+        # self.parser.add_argument('-i', '--input', type=str, help='Input file for conversion')
         self.parser.add_argument('-f', '--files', help='List of files to merge', nargs='+')
+        self.parser.add_argument('-o', '--output', type=str, help='Output file for conversion', required=False)
+
 
 
         self.args = self.parser.parse_args()
         print(f'Args: {self.args}')
 
-        if self.args.convert:
-            print('Convertor')
-            converter.jpg_to_pdf(self.args.input_file, self.args.output_file)
-        elif self.args.merge:
-            print('Merger')
-            merger.merge(self.args.files)
+        if self.args.convert and self.args.merge:
 
+            print('Convert & Merge')
+            pdfs = self.images_to_pdf(self.args.files)
+            self.merge_pdfs(pdfs, self.args.output)
+            for pdf in pdfs:
+                if os.path.exists(pdf):
+                    os.remove(pdf)
+
+        elif self.args.convert:
+            
+            print('Convert')
+            if len(self.args.files) == 1:
+                self.jpg_to_pdf(self.args.files, self.args.output)
+            else:
+                self.images_to_pdf(self.args.files)
+
+        elif self.args.merge:
+
+            print('Merge')
+            self.merge_pdfs(self.args.files, self.args.output)
+
+    def merge_pdfs(self, files, output= 'result.pdf'):
+        merger = PdfMerger() 
+        for file in files:
+            merger.append(file)
+        merger.write(output)
+        merger.close()
+    
+    def jpg_to_pdf(self, input_file, output_file):
+        img = Image.open(input_file[0])
+        img.convert("RGB").save(output_file)
+
+
+    def images_to_pdf(self, images, output= None):
+        output_files = []
+        for image in images:
+            img = Image.open(image)
+            path = Path(image)
+
+            output_file = output if output else f"{os.path.splitext(path)[0]}.pdf"
+
+            img.convert("RGB").save(output_file)
+
+            output_files.append(output_file)
+        return output_files
 
     def __init__(self):
         self.parser = argparse.ArgumentParser(
