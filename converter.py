@@ -1,10 +1,8 @@
 from PIL import Image
+# import pdf2image
 
-file = "th-3612395174"
+def jpg_to_pdf(input_file, output_file):
+    img = Image.open(input_file)
+    img.convert("RGB").save(output_file)
 
-img = Image.open(f"{file}.jpg")
-img.convert("RGB").save(f"./runs/{file}.pdf")
-
-
-def jpg_to_pdf():
     print('done')

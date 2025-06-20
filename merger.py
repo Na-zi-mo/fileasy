@@ -1,8 +1,8 @@
 from PyPDF2 import PdfMerger # type: ignore
 
-merger = PdfMerger()
-merger.append("1.pdf")
-merger.append("1.pdf")
-merger.append("2.pdf")
-merger.write("/runs/result.pdf")
-merger.close()
+def merge(files):
+    merger = PdfMerger() 
+    for file in files:
+        merger.append(file)
+    merger.write("runs/result.pdf")
+    merger.close()
