@@ -4,11 +4,16 @@ from PIL import Image
 from pathlib import Path
 from PyPDF2 import PdfMerger 
 import os
+from pdf2image import convert_from_path, convert_from_bytes
+from pdf2image.exceptions import (
+    PDFInfoNotInstalledError,
+    PDFPageCountError,
+    PDFSyntaxError
+)
 
 class FileEasy:
 
     def setup(self):
-
         self.parser.add_argument('-c', '--convert', action='store_true', help='Convert the input file')
         self.parser.add_argument('-m', '--merge', action='store_true', help='Merge the input files')
         # self.parser.add_argument('-i', '--input', type=str, help='Input file for conversion')
@@ -50,9 +55,20 @@ class FileEasy:
         merger.close()
     
     def jpg_to_pdf(self, input_file, output_file):
-        img = Image.open(input_file[0])
-        img.convert("RGB").save(output_file)
+        
+        extension = os.path.splitext(input_file[0])[1]
 
+        match extension:
+            case '.pdf':
+                print("pdf to image")
+                images = convert_from_path(input_file[0])
+                for image in images:
+                    image.save(output_file)
+
+            case '.jpg' | '.png':
+                print("image to pdf")
+                img = Image.open(input_file[0])
+                img.convert("RGB").save(output_file)
 
     def images_to_pdf(self, images, output= None):
         output_files = []
