@@ -65,10 +65,13 @@ class FileEasy:
                 for image in images:
                     image.save(output_file)
 
-            case '.jpg' | '.png':
+            case '.jpg' | '.png' | '.jpeg' | '.bmp' | '.tif' | '.tiff' | '.gif' | '.webp':
                 print("image to pdf")
                 img = Image.open(input_file[0])
                 img.convert("RGB").save(output_file)
+
+            case _:
+                print("Unknown format")
 
     def images_to_pdf(self, images, output= None):
         output_files = []
