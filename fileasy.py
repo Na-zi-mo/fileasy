@@ -38,7 +38,7 @@ class FileEasy:
             
             print('Convert')
             if len(self.args.files) == 1:
-                self.jpg_to_pdf(self.args.files, self.args.output)
+                self.convert(self.args.files, self.args.output)
             else:
                 self.images_to_pdf(self.args.files)
 
@@ -54,7 +54,7 @@ class FileEasy:
         merger.write(output)
         merger.close()
     
-    def jpg_to_pdf(self, input_file, output_file):
+    def convert(self, input_file, output_file):
         
         extension = os.path.splitext(input_file[0])[1]
 

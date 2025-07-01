@@ -328,3 +328,5 @@ runs/*
 !assets/**
 
 !requirements.txt
+
+test.py
