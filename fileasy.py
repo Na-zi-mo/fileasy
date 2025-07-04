@@ -94,4 +94,8 @@ class FileEasy:
 
         self.setup()
 
-fileEasy = FileEasy()
+def main():
+    FileEasy()
+
+if __name__ == "__main__":
+    main()

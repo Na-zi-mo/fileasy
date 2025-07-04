@@ -1,4 +1,4 @@
 #!/bin/bash
 source .venv/bin/activate
-python3 fileasy.py "$@"
+python3 src/fileasy.py "$@"
 deactivate
