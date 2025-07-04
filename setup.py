@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='fileasy',
-    version='0.1.8',
+    version='0.1.9',
     license='Apache-2.0',
 
     py_modules=['fileasy'],
@@ -16,9 +16,9 @@ setup(
     author= "Nazim Adda",
     author_email = "adda.nazim7@gmail.com",
 
-    url='https://github.com/Na-zi-mo/ConvertEasy',
+    url='https://github.com/Na-zi-mo/fileasy',
     project_urls={
-        'Bug Reports': 'https://github.com/Na-zi-mo/ConvertEasy/issues',
+        'Bug Reports': 'https://github.com/Na-zi-mo/fileasy/issues',
         'Source': 'https://github.com/Na-zi-mo  ',
     },
 
