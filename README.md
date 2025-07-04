@@ -39,25 +39,25 @@ options :
 Convert an image to PDF
 
 ```
-fileasy.py -c -f image.jpg -o output.pdf
+fileasy -c -f image.jpg -o output.pdf
 ```
 
 Convert a PDF to images
 
 ```
-fileasy.py -c -f document.pdf -o image_output.jpg
+fileasy -c -f document.pdf -o image_output.jpg
 ```
 
 Merge multiple PDF files
 
 ```
-fileasy.py -m -f file1.pdf file2.pdf -o merged.pdf
+fileasy -m -f file1.pdf file2.pdf -o merged.pdf
 ```
 
 Convert multiple images and merge into one PDF
 
 ```
-fileasy.py -c -m -f img1.jpg img2.jpg -o merged.pdf
+fileasy -c -m -f img1.jpg img2.jpg -o merged.pdf
 ```
 
 # 🔧 File Format Support
