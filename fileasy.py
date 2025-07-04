@@ -15,8 +15,7 @@ class FileEasy:
 
     def setup(self):
         self.parser.add_argument('-c', '--convert', action='store_true', help='Convert the input file')
-        self.parser.add_argument('-m', '--merge', action='store_true', help='Merge the input files')
-        # self.parser.add_argument('-i', '--input', type=str, help='Input file for conversion')
+        self.parser.add_argument('-m', '--merge', action='store_true', help='Merge the input files, can be combined with Convert command to merge resulting PDFs')
         self.parser.add_argument('-f', '--files', help='List of files to merge', nargs='+')
         self.parser.add_argument('-o', '--output', type=str, help='Output file for conversion', required=False)
 
@@ -89,7 +88,7 @@ class FileEasy:
     def __init__(self):
         self.parser = argparse.ArgumentParser(
             prog='fileasy',
-            description='script'
+            description='Fileasy is a simple CLI tool to convert images to PDFs and vice versa, and merge PDFs'
         )
 
         self.setup()

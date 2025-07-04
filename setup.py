@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='fileasy',
-    version='0.1.9',
+    version='0.1.0',
     license='Apache-2.0',
 
     py_modules=['fileasy'],
@@ -42,7 +42,6 @@ setup(
 
     zip_safe=False,
     
-    # Optional dependencies for CLI
     install_requires=[
         "pdf2image>=1.17.0",
         "pillow>=9.0.0",
