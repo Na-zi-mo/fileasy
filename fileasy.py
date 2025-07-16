@@ -55,17 +55,18 @@ class FileEasy:
     
     def convert(self, input_file, output_file):
         
-        extension = os.path.splitext(input_file[0])[1]
+        input_extension = os.path.splitext(input_file[0])[1]
+        output_extension = os.path.splitext(output_file)[1]
 
-        match extension:
+        match input_extension:
             case '.pdf':
-                print("pdf to image")
+                print(f"{input_extension} to {output_extension}")
                 images = convert_from_path(input_file[0])
                 for image in images:
                     image.save(output_file)
 
             case '.jpg' | '.png' | '.jpeg' | '.bmp' | '.tif' | '.tiff' | '.gif' | '.webp':
-                print("image to pdf")
+                print(f"{input_extension} to {output_extension}")
                 img = Image.open(input_file[0])
                 img.convert("RGB").save(output_file)
 
